@@ -14,7 +14,7 @@ namespace BAOS.Web.Data
         {
 
         }
-        private DbSet<User> Users { get; set; }
+        public DbSet<User> Users { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -22,7 +22,7 @@ namespace BAOS.Web.Data
             if (!optionsBuilder.IsConfigured)
             {
                 optionsBuilder
-                    .UseSqlServer("Source=(localdb)\\ProjectModels;Initial Catalog=BaosDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                    .UseNpgsql("User ID = postgres;Password=admin;Server=localhost;Port=5433;Database=bitirme;Integrated Security=true;Pooling=true;");
             }
         }
 

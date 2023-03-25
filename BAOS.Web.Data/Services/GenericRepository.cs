@@ -10,7 +10,7 @@ namespace BAOS.Web.Data.Services
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
-        private readonly DbContext _context;
+        public readonly DbContext _context;
 
         public GenericRepository(DbContext context)
         {
@@ -21,9 +21,9 @@ namespace BAOS.Web.Data.Services
             throw new NotImplementedException();
         }
 
-        public Task<List<T>> GetAllAsync()
+        public async Task<List<T>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return await _context.Set<T>().ToListAsync();
         }
 
         public async Task<T> AddAsync(T entity)

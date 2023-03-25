@@ -1,4 +1,5 @@
 using BAOS.Web.Data;
+using BAOS.Web.Data.Configurations;
 using BAOS.Web.Data.Contracts;
 using BAOS.Web.Data.Services;
 using Microsoft.EntityFrameworkCore;
@@ -7,8 +8,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddDbContext<BAOSDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("BAOSDbConnStr")));
+//builder.Services.AddDbContext<BAOSDbContext>(options =>
+//    options.UseSqlServer(builder.Configuration.GetConnectionString("BAOSDbConnStr")));
+
+builder.Services.AddEntityFrameworkNpgsql().AddDbContext<BAOSDbContext>(opt =>
+    opt.UseNpgsql(builder.Configuration.GetConnectionString("BAOSDbConnStr")));
 
 builder.Services.AddControllers();
 
@@ -21,6 +25,7 @@ builder.Services.AddCors(q => q.AddPolicy("AllowAll", policy => policy
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddAutoMapper(typeof(AutoMapperConfig));
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<DbContext, BAOSDbContext>();
