@@ -13,8 +13,9 @@ namespace BAOS.WebApi.Controllers
         public async Task<IActionResult> RunModel(ModelFeatures features)
         {
             BAOSModel model = new BAOSModel();
-            string result = model.Run(features);
-            return Ok();
+            //string result = model.Run(features);
+            string result = "LAN";
+            return Ok(result);
         }
     }
 }

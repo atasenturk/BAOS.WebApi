@@ -8,11 +8,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-//builder.Services.AddDbContext<BAOSDbContext>(options =>
-//    options.UseSqlServer(builder.Configuration.GetConnectionString("BAOSDbConnStr")));
+builder.Services.AddDbContext<BAOSDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("BAOSDbConnStr")));
 
-builder.Services.AddEntityFrameworkNpgsql().AddDbContext<BAOSDbContext>(opt =>
-    opt.UseNpgsql(builder.Configuration.GetConnectionString("BAOSDbConnStr")));
+//builder.Services.AddEntityFrameworkNpgsql().AddDbContext<BAOSDbContext>(opt =>
+//    opt.UseNpgsql(builder.Configuration.GetConnectionString("BAOSDbConnStr")));
 
 builder.Services.AddControllers();
 

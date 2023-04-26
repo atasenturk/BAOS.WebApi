@@ -20,11 +20,17 @@ namespace BAOS.Web.Data.Services
             _context = context;
         }
 
-        public Task<User> Register(User register)
+        public async Task<User> Register(User register)
         {
-            register.Password = Encryptor.EncryptMD5(register.Password);
+            var entity = await _context.Users
+                .FirstOrDefaultAsync(q => q.Email == register.Email);
+            if (entity == null)
+            {
+                register.Password = Encryptor.EncryptMD5(register.Password);
 
-            return base.AddAsync(register);
+                return await base.AddAsync(register);
+            }
+            return null;
         }
 
         public async Task<bool> Login(LoginViewModel model)
@@ -33,6 +39,14 @@ namespace BAOS.Web.Data.Services
                 .FirstOrDefaultAsync(q => q.Email == model.Email && q.Password == Encryptor.EncryptMD5(model.Password));
 
             return entity != null;
+        }
+
+        public async Task<User> GetByEmail(string email)
+        {
+            var entity = await _context.Users
+                .FirstOrDefaultAsync(q => q.Email == email);
+
+            return entity;
         }
     }
 }

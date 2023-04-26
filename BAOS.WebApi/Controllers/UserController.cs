@@ -22,7 +22,7 @@ namespace BAOS.WebApi.Controllers
 
         [Route("Login")]
         [HttpPost]
-        public async Task<IActionResult> Login(LoginViewModel login)
+        public async Task<IActionResult> Login([FromBody] LoginViewModel login)
         {
             if (await _userRepository.Login(login))
             {
@@ -36,7 +36,9 @@ namespace BAOS.WebApi.Controllers
         public async Task<IActionResult> Register(RegisterViewModel register)
         {
             User user = _mapper.Map<User>(register);
-            await _userRepository.Register(user);
+            
+            var result = await _userRepository.Register(user);
+            if (result == null) return BadRequest();
             return Ok();
         }
 
@@ -44,6 +46,12 @@ namespace BAOS.WebApi.Controllers
         public async Task<List<User>> GetAllUsers()
         {
             return await _userRepository.GetAllAsync();
+        }
+
+        [HttpGet("{email}")]
+        public async Task<User> GetByEmail(string email)
+        {
+            return await _userRepository.GetByEmail(email);
         }
     }
 }
