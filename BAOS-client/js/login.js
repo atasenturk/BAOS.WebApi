@@ -1,7 +1,7 @@
 const btnLogin = document.getElementById("btnLogin");
 const btnRegister = document.getElementById("btnRegister");
-const urlLogin = "https://localhost:7089/api/user/login"
-const urlRegister = "https://localhost:7089/api/user/register"
+const urlLogin = "https://localhost:44329/api/user/login"
+const urlRegister = "https://localhost:44329/api/user/register"
 var modal = document.getElementById("myModal");
 const modalResult = document.getElementById("predResult");
 

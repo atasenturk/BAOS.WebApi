@@ -1,4 +1,4 @@
-const url = "https://localhost:7089/api";
+const url = "https://localhost:44329/api";
 
 const btnPredict = document.getElementById("btnPredict");
 const loginErrorBtn = document.getElementById("loginErrorBtn");

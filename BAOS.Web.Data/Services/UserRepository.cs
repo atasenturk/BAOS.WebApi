@@ -8,6 +8,7 @@ using BAOS.Web.Data.Utils;
 using BAOS.Web.Domain.Models;
 using BAOS.Web.Domain.ViewModels;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Win32;
 
 namespace BAOS.Web.Data.Services
 {
@@ -46,6 +47,14 @@ namespace BAOS.Web.Data.Services
             var entity = await _context.Users
                 .FirstOrDefaultAsync(q => q.Email == email);
 
+            return entity;
+        }
+
+        public async Task<User>UpdateAsync(User entity)
+        {
+            entity.Password = Encryptor.EncryptMD5(entity.Password);
+            _context.Entry(entity).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
             return entity;
         }
     }

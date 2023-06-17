@@ -4,6 +4,7 @@ using BAOS.Web.Domain.Models;
 using BAOS.Web.Domain.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace BAOS.WebApi.Controllers
 {
@@ -12,12 +13,14 @@ namespace BAOS.WebApi.Controllers
     public class UserController : ControllerBase
     {
         private readonly IUserRepository _userRepository;
+        private readonly IResultRepository _resultRepository;
         private readonly IMapper _mapper;
 
-        public UserController(IUserRepository userRepository, IMapper mapper)
+        public UserController(IUserRepository userRepository, IMapper mapper, IResultRepository resultRepository)
         {
             _userRepository = userRepository;
             _mapper = mapper;
+            _resultRepository = resultRepository;
         }
 
         [Route("Login")]
@@ -53,5 +56,37 @@ namespace BAOS.WebApi.Controllers
         {
             return await _userRepository.GetByEmail(email);
         }
+
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(int id, [FromBody] RegisterViewModel userViewModel)
+        {
+            var existingUser = await _userRepository.GetByIdAsync(id);
+
+            if (existingUser == null)
+            {
+                return NotFound();
+            }
+
+            _mapper.Map(userViewModel, existingUser);
+
+            var updatedUser = await _userRepository.UpdateAsync(existingUser);
+
+            if (updatedUser == null)
+            {
+                return BadRequest(); 
+            }
+
+            return Ok(updatedUser);
+        }
+
+        [HttpGet("requests/{userId}")]
+        public async Task<IActionResult> GetResultsByUserId(int userId)
+        {
+            var userRequest = await _resultRepository.GetRequestAndAnswers(userId);
+
+            return Ok(userRequest);
+        }
+
     }
 }
