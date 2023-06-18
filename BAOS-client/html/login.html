@@ -12,9 +12,9 @@
 			<div class="signup">
 				<form>
 					<label for="chk" aria-hidden="true">Kayıt Ol</label>
-					<input type="text" name="txt" id = "username" placeholder="Kullanıcı Adı" required="">
+					<input type="text" name="txt" minlength="5" id = "username" placeholder="Kullanıcı Adı" required="">
 					<input type="email" name="email" id = "emailRegister" placeholder="E-Posta" required="">
-					<input type="password" name="pswd" id = "pswdRegister" placeholder="Şifre" required="">
+					<input type="password" name="pswd" minlength="5" id = "pswdRegister" placeholder="Şifre" required="">
 					<!-- <button>Kayıt Ol</button> -->
 					<button type="submit" id="btnRegister">Kayıt Ol</button>
 				</form>
@@ -23,8 +23,8 @@
 			<div class="login">
 				<form>
 					<label for="chk" aria-hidden="true">Giriş Yap</label>
-					<input type="email" name="email" id="email" placeholder="E-Posta" required="">
-					<input type="password" name="pswd" id="pswd" placeholder="Şifre" required="">
+					<input type="email" name="email" minlength="5" id="email" placeholder="E-Posta" required="">
+					<input type="password" name="pswd" minlength="5" id="pswd" placeholder="Şifre" required="">
 					<button type="submit" id="btnLogin">Giriş Yap</button>
 				</form>
 			</div>

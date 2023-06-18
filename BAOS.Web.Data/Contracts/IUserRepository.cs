@@ -14,5 +14,6 @@ namespace BAOS.Web.Data.Contracts
         Task<bool> Login(LoginViewModel model);
         Task<User> GetByEmail(string email);
         Task<User> UpdateAsync(User entity);
+        Task<bool> DeleteById(int id);
     }
 }

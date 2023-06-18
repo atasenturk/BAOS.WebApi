@@ -7,6 +7,7 @@ const modalResult = document.getElementById("predResult");
 
 async function clickLogin(e) {
   e.preventDefault();
+  
   var email = document.getElementById("email").value;
   var pswd = document.getElementById("pswd").value;
 
@@ -37,13 +38,32 @@ async function clickLogin(e) {
     console.error(error);
   });
 }
+async function disableInputs() {
+  document.getElementById("username").disabled = true;
+  document.getElementById("btnRegister").disabled = true;
+  document.getElementById("emailRegister").disabled = true;
+  document.getElementById("pswdRegister").disabled = true;
+  document.getElementById("email").disabled = true;
+  document.getElementById("pswd").disabled = true;
+}
 
+async function enableInputs() {
+  document.getElementById("username").disabled = false;
+  document.getElementById("btnRegister").disabled = false;
+  document.getElementById("emailRegister").disabled = false;
+  document.getElementById("pswdRegister").disabled = false;
+  
+  document.getElementById("email").disabled = false;
+  document.getElementById("pswd").disabled = false;
+}
 
 async function clickRegister(e) {
   e.preventDefault();
   var username = document.getElementById("username").value;
   var email = document.getElementById("emailRegister").value;
   var pswd = document.getElementById("pswdRegister").value;
+
+  disableInputs();
 
   let data = {
     username: username,
@@ -63,9 +83,11 @@ async function clickRegister(e) {
         alert("Kullanıcı başarılı bir şekilde oluşturuldu!");
       }
       else if(response.status === 400) {
-        alert("Kullanıcı e-postasının sistemde kaydı var!");
+        alert("Kullanıcı e-posta veya kullanıcı adının sistemde kaydı var!");
       }
   });
+
+  enableInputs();
 }
 
 window.onclick = function(event) {
