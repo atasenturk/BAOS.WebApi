@@ -112,18 +112,31 @@ function getAnswers() {
   }
 }
 
+function AnswersToString() {
+    const answers = [];
+    for (let i = 1; i <= 18; i++) {
+      const selectedOption = Array.from(document.getElementsByName(`Q${i}`)).find(r => r.checked);
+      if (selectedOption) {
+        answers.push(parseInt(selectedOption.value));
+      }
+    }
+
+    const answersString = answers.join(' ');
+    return answersString;
+}
+
 async function clickPredict(e) {
   e.preventDefault();
 
   const values = getAnswers();
-
+  const user = await getUser()
   // const form = document.querySelector('#predictForm');
   // const inputs = Array.from(form.querySelectorAll('input'));
   // const inputValues = inputs.map(input => input.value);
   // const intValues = inputValues.map(Number);
   const data = {
-    "userId": 2,
-    "answers": "2 54 65 2 2 1 2 3",
+    "userId": user.id,
+    "answers": AnswersToString(),
     "features": values
   };
 
