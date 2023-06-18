@@ -81,9 +81,9 @@ namespace BAOS.WebApi.Controllers
         }
 
         [HttpGet("requests/{userId}")]
-        public async Task<IActionResult> GetResultsByUserId(int userId)
+        public async Task<IActionResult> GetAllRequestsById(int userId)
         {
-            var userRequest = await _resultRepository.GetRequestAndAnswers(userId);
+            var userRequest = await _resultRepository.GetAllRequestsById(userId);
 
             return Ok(userRequest);
         }

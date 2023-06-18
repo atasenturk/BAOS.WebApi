@@ -4,5 +4,5 @@ namespace BAOS.Web.Data.Contracts;
 
 public interface IResultRepository : IGenericRepository<Result>
 {
-    Task<List<UserRequest>> GetRequestAndAnswers(int UserId);
+    Task<List<UserRequest>> GetAllRequestsById(int UserId);
 }

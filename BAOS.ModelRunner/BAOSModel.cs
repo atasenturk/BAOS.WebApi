@@ -24,7 +24,7 @@ namespace BAOS.ModelRunner
             // 2) Provide script and arguments
             var cmd = projectDirectory + "\\BAOS.ModelRunner\\python_model\\app.py";
 
-            psi.Arguments = BuildArguments(cmd, features.Features);
+            psi.Arguments = BuildArguments(cmd, features.features);
 
             // 3) Process configurations
             psi.UseShellExecute = false;

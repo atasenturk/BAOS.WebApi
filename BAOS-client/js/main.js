@@ -122,6 +122,8 @@ async function clickPredict(e) {
   // const inputValues = inputs.map(input => input.value);
   // const intValues = inputValues.map(Number);
   const data = {
+    "userId": 2,
+    "answers": "2 54 65 2 2 1 2 3",
     "features": values
   };
 

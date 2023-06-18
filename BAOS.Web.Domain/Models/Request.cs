@@ -5,6 +5,8 @@
         public int RequestId { get; set; }
         public string Answers { get; set; }
 
+        public DateTime RequestTime { get; set; }
+
         public int UserId { get; set; }
         public User User { get; set; }
 

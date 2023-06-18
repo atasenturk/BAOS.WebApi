@@ -18,7 +18,7 @@ namespace BAOS.WebApi.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> RunModel(int userId, string answers, ModelFeatures features)
+        public async Task<IActionResult> RunModel(ModelFeatures features)
         {
             BAOSModel model = new BAOSModel();
             //string result = model.Run(features);
@@ -39,7 +39,7 @@ namespace BAOS.WebApi.Controllers
                     break;
             }
 
-            if (await _requestRepository.AddRequest(userId, answers, protocol))
+            if (await _requestRepository.AddRequest(features.userId, features.answers, protocol))
             {
                 return Ok(result);
             }

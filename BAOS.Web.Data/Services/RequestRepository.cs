@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using BAOS.Web.Data.Contracts;
 using BAOS.Web.Domain.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace BAOS.Web.Data.Services
 {
@@ -25,7 +26,8 @@ namespace BAOS.Web.Data.Services
                 var request = new Request
                 {
                     Answers = answers,
-                    UserId = userId
+                    UserId = userId,
+                    RequestTime = DateTime.Now
                 };
 
                 _context.Requests.Add(request);
@@ -46,6 +48,22 @@ namespace BAOS.Web.Data.Services
             {
                 return false;
             }
+        }
+
+        public async Task<UserRequest> GetRequestById(int requestId)
+        {
+            var userRequest = await _context.Requests
+                .Join(_context.Results, req => req.RequestId, res => res.RequestId, (req, res) => new { req, res })
+                .Where(r => r.req.RequestId == requestId)
+                .Select(r => new UserRequest
+                {
+                    RequestId = r.req.RequestId,
+                    Protocol = r.res.Protocol,
+                    Answers = r.req.Answers
+                })
+                .FirstOrDefaultAsync();
+
+            return userRequest;
         }
 
     }

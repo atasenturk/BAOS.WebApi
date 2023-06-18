@@ -14,7 +14,7 @@ public class ResultRepository : GenericRepository<Result>, IResultRepository
         _context = context;
     }
 
-    public async Task<List<UserRequest>> GetRequestAndAnswers(int userId)
+    public async Task<List<UserRequest>> GetAllRequestsById(int userId)
     {
         var results =  _context.Results
             .Join(_context.Requests, res => res.RequestId, req => req.RequestId, (res, req) => new { res, req })
@@ -28,6 +28,5 @@ public class ResultRepository : GenericRepository<Result>, IResultRepository
             .ToList();
 
         return results;
-
     }
 }
