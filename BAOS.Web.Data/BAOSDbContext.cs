@@ -14,7 +14,13 @@ namespace BAOS.Web.Data
         {
 
         }
-        public DbSet<User> Users { get; set; }
+
+        public BAOSDbContext()
+        {
+            
+        }
+
+        public virtual DbSet<User> Users { get; set; } = default!;
 
         public DbSet<Request> Requests { get; set; }
 

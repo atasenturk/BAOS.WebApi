@@ -31,7 +31,7 @@ namespace BAOS.Web.Data.Services
             register.Password = Encryptor.EncryptMD5(register.Password);
             return await base.AddAsync(register);
         }
-
+        
         public async Task<bool> Login(LoginViewModel model)
         {
             var entity = await _context.Users
