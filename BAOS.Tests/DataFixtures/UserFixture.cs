@@ -17,7 +17,7 @@ using Microsoft.Win32;
 using BAOS.Tests.Mock;
 
 [TestFixture]
-public class UserRepositoryTests
+public class UserFixture
 {
     private DbContextOptions<BAOSDbContext> _options;
     private BAOSDbContext _context;
@@ -26,7 +26,7 @@ public class UserRepositoryTests
     [OneTimeSetUp]
     public async Task Setup()
     {
-        var dbFactory = new MockDbFactory("BAOSDb");
+        var dbFactory = new MockDbFactory("BaosDB");
         _context = new BAOSDbContext(dbFactory.Options);
         _userRepository = new Mock<UserRepository>(_context);
         dbFactory.SeedData();
@@ -57,19 +57,19 @@ public class UserRepositoryTests
     {
         var returnValue = new User()
         {
-            Id = 100,
             UserName = "test",
             Email = "test@gmail.com",
-            Password = "password",
+            Password = Encryptor.EncryptMD5("password"),
             Requests = new List<Request>()
         };
 
         _context.Users.Add(returnValue);
+        _context.SaveChanges();
 
         var result = await _userRepository.Object.Login(new LoginViewModel()
         {
-            Email = "test321@gmail.com",
-            Password = "pass"
+            Email = "test@gmail.com",
+            Password = "password"
         });
 
         Assert.AreEqual(result, true);
@@ -88,6 +88,7 @@ public class UserRepositoryTests
         };
 
         _context.Users.Add(returnValue);
+        _context.SaveChanges();
         var result = await _userRepository.Object.GetByEmail("test@gmail.com");
 
 
@@ -109,7 +110,7 @@ public class UserRepositoryTests
         };
 
         _context.Users.Add(returnValue);
-
+        _context.SaveChanges();
         var result =  await _userRepository.Object.DeleteById(100);
         // Act
         // Assert
@@ -121,6 +122,7 @@ public class UserRepositoryTests
     {
         var returnValue = new User()
         {
+            Id = 100,
             UserName = "test",
             Email = "test@gmail.com",
             Password = "password",
@@ -128,10 +130,12 @@ public class UserRepositoryTests
         };
 
         _context.Users.Add(returnValue);
+        _context.SaveChanges();
 
         var returnValue2 = new User()
         {
-            UserName = "test",
+            Id = 100,
+            UserName = "testNew",
             Email = "test@gmail.com",
             Password = "password",
             Requests = new List<Request>()
@@ -140,7 +144,7 @@ public class UserRepositoryTests
         var result = await _userRepository.Object.UpdateAsync(returnValue2);
         // Act
         // Assert
-        Assert.AreEqual(result, returnValue2.UserName);
+        Assert.AreEqual(result.UserName, returnValue2.UserName);
 
     }
 }

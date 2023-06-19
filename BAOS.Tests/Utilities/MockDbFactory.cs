@@ -34,6 +34,13 @@ namespace BAOS.Tests.Mock
                     Requests = new List<Request>()
                 });
 
+                context.Requests.Add(new Request()
+                {
+                    Answers = "answers",
+                    RequestTime = DateTime.Now,
+
+                });
+
                 context.SaveChanges();
             }
         }

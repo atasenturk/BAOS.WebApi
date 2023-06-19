@@ -51,7 +51,8 @@ namespace BAOS.Web.Data.Services
         public async Task<User>UpdateAsync(User entity)
         {
             entity.Password = Encryptor.EncryptMD5(entity.Password);
-            _context.Entry(entity).State = EntityState.Modified;
+            //_context.Entry(entity).State = EntityState.Modified;
+            _context.Update(entity);
             await _context.SaveChangesAsync();
             return entity;
         }
