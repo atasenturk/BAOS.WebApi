@@ -1,0 +1,189 @@
+:root {
+  --primary-color: rgb(95, 108, 175);
+  --secondary-color: #a7e9af;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,400&display=swap");
+
+/* General Settings */
+label {
+  display: flex;
+  cursor: pointer;
+  font-weight: 500;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 0.375em;
+
+  &:focus-within {
+    outline: 0.125em solid $primary-color;
+  }
+}
+label input {
+  position: absolute;
+  left: -9999px;
+}
+label input:checked + span {
+  background-color: #d6d6e5;
+}
+label input:checked + span:before {
+  box-shadow: inset 0 0 0 0.4375em #00005c;
+}
+
+label span {
+  display: flex;
+  align-items: center;
+  padding: 0.375em 0.75em 0.375em 0.375em;
+  border-radius: 99em;
+  transition: 0.25s ease;
+}
+label span:hover {
+  background-color: #d6d6e5;
+}
+label span:before {
+  display: flex;
+  flex-shrink: 0;
+  content: "";
+  background-color: #fff;
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 50%;
+  margin-right: 0.375em;
+  transition: 0.25s ease;
+  box-shadow: inset 0 0 0 0.125em #00005c;
+}
+
+/* checkbox span leri kare yapmak için eklediğim kod */
+.checkbox::before {
+  border-radius: 0;
+}
+
+.text-center {
+  text-align: center;
+  color: #2c3e50;
+}
+
+.with-50 {
+  width: 50%;
+}
+
+.ml-auto {
+  margin-left: auto;
+}
+
+.question {
+  font-size: 1.35em;
+  line-height: 1.2;
+  margin: 0 0 1.5rem;
+}
+
+/* Progress */
+.progressbar {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem 0 4rem 0;
+  counter-reset: step;
+}
+
+.progressbar::before,
+.progress {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 4px;
+  width: 100%;
+  background-color: #dcdcdc;
+}
+
+.progress {
+  background-color: var(--secondary-color);
+  width: 0%;
+  transition: 0.3s ease-in-out;
+}
+
+.progress-step {
+  width: 30px;
+  height: 30px;
+  font-size: 16px;
+  background-color: #dcdcdc;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.progress-step::before {
+  counter-increment: step;
+  content: counter(step);
+}
+
+.progress-step.active {
+  background-color: var(--secondary-color);
+  border: 3px solid #69dd76;
+}
+
+/* form */
+.form {
+  width: clamp(800px, 30%, 430px);
+  margin: 0 auto;
+  padding: 1.5rem;
+  /* border: 1px solid #ccc;
+  border-radius: 0.35rem; */
+  /* background-color: #ecf0f1;
+  box-shadow: 2px 4px 11px -1px #000; */
+}
+
+.form-step {
+  display: none;
+  transform-origin: top;
+  animation: animate 0.5s;
+}
+
+@keyframes animate {
+  from {
+    transform: scale(1, 0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1, 1);
+    opacity: 1;
+  }
+}
+
+.form-step.active {
+  display: block;
+}
+
+.input-group {
+  margin: 2rem 0;
+}
+
+/* Buttons */
+.btns-group {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.btn {
+  max-width: 10rem;
+  padding: 0.75rem;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  background-color: var(--primary-color);
+  color: #f3f3f3;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: all 250ms ease-in-out;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn:hover {
+  box-shadow: 0 0 0 2px #fff, 0 0 0 3px var(--primary-color);
+}

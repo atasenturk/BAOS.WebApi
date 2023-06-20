@@ -1,201 +1,572 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="../css/index.css" />
+    <link rel="stylesheet" type="text/css" href="../css/form-style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BAOS</title>
-  <link rel="stylesheet" type="text/css" href="../css/index.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link href="https://cdn.jsdelivr.net/np m/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-</head>
+    <title>BAOS</title>
+  </head>
+  <body>
+    <nav class="topnav">
+      <a class="logo">BAOS</a>
+      <a class="active" href="index.html"
+        ><i class="fa fa-fw fa-podcast"></i> Prediction</a
+      >
+      <div class="topnav-right">
+        <span id="greeding"></span>
+        <a href="profile.html"><i class="fa fa-fw fa-user-o"></i></a>
+        <a id="btn-logout" href="login.html"
+          ><i class="fa fa-fw fa-sign-out"></i
+        ></a>
+      </div>
+    </nav>
 
-<body>
+    <div class="container">
+      <header class="header">
+        <h1 id="title" class="header__title">BAOS Öneri Sistemi</h1>
+        <p id="description" class="header__description">
+          Lütfen soruların tamamını cevaplayarak size en uygun sistemi
+          önermemize yardımcı olun.
+        </p>
+        <img
+          src="https://res.cloudinary.com/alexandracaulea/image/upload/v1585333913/illustration_x46ict.svg"
+          alt=""
+          aria-hidden="true"
+          class="illustration"
+        />
+      </header>
+      <main class="main">
+        <form action="#" class="form">
+          <!-- Progressbar -->
+          <div class="progressbar">
+            <div class="progress" id="progress"></div>
 
-  <div class="topnav">
-    <a class="logo">BAOS</a>
-    <a class="active" href="index.html"><i class="fa fa-fw fa-podcast"></i> Prediction</a>
-    <div class="topnav-right">
-      <span id="greeding"></span>
-      <a href="profile.html"><i class="fa fa-fw fa-user-o"></i></a>
-      <a id="btn-logout" href="login.html"><i class="fa fa-fw fa-sign-out"></i></a>
+            <div class="progress-step active"></div>
+            <div class="progress-step"></div>
+            <div class="progress-step"></div>
+            <div class="progress-step"></div>
+            <div class="progress-step"></div>
+            <div class="progress-step"></div>
+            <div class="progress-step"></div>
+            <div class="progress-step"></div>
+            <div class="progress-step"></div>
+            <div class="progress-step"></div>
+            <div class="progress-step"></div>
+            <div class="progress-step"></div>
+            <div class="progress-step"></div>
+            <div class="progress-step"></div>
+            <div class="progress-step"></div>
+            <div class="progress-step"></div>
+            <div class="progress-step"></div>
+            <div class="progress-step"></div>
+          </div>
+
+          <!-- Qeustions -->
+
+          <div class="form-step active">
+            <div class="input-group">
+              <h2 class="question">
+                Binanın bulunduğu bölgenin dağlık/tepelik arazi yoğunluğunu
+                nasıl tanımlarsınız?
+              </h2>
+              <label>
+                <input type="radio" name="Q1" value="1" checked />
+                <span>Dağlık</span>
+              </label>
+              <label>
+                <input type="radio" name="Q1" value="2" />
+                <span>Kısmen dağlık</span>
+              </label>
+              <label>
+                <input type="radio" name="Q1" value="3" />
+                <span>Dağ yok</span>
+              </label>
+            </div>
+            <div class="">
+              <a href="#" class="btn btn-next with-50 ml-auto">Sonraki</a>
+            </div>
+          </div>
+
+          <div class="form-step">
+            <div class="input-group">
+              <h2 class="question">Bina bir ovada mı konumlanıyor?</h2>
+              <label>
+                <input type="radio" name="Q2" value="1" checked />
+                <span>Evet</span>
+              </label>
+              <label>
+                <input type="radio" name="Q2" value="0" />
+                <span>Hayır</span>
+              </label>
+            </div>
+
+            <div class="btns-group">
+              <a href="#" class="btn btn-prev">Önceki</a>
+              <a href="#" class="btn btn-next">Sonraki</a>
+            </div>
+          </div>
+
+          <div class="form-step">
+            <div class="input-group">
+              <h2 class="question">Bina ormana yakın mı?</h2>
+              <label>
+                <input type="radio" name="Q3" value="0" checked />
+                <span>Ormanın içinde</span>
+              </label>
+              <label>
+                <input type="radio" name="Q3" value="1" />
+                <span>Ormana yakın</span>
+              </label>
+              <label>
+                <input type="radio" name="Q3" value="2" />
+                <span>Değil</span>
+              </label>
+            </div>
+
+            <div class="btns-group">
+              <a href="#" class="btn btn-prev">Önceki</a>
+              <a href="#" class="btn btn-next">Sonraki</a>
+            </div>
+          </div>
+
+          <div class="form-step">
+            <div class="input-group">
+              <h2 class="question">
+                Binanın suya(deniz, nehir vb.) yakınlığı nedir?
+              </h2>
+              <label>
+                <input type="radio" name="Q4" value="0" checked />
+                <span>1 km'den az</span>
+              </label>
+              <label>
+                <input type="radio" name="Q4" value="1" />
+                <span>1-5 km arası</span>
+              </label>
+              <label>
+                <input type="radio" name="Q4" value="2" />
+                <span>Yakın değil</span>
+              </label>
+            </div>
+
+            <div class="btns-group">
+              <a href="#" class="btn btn-prev">Önceki</a>
+              <a href="#" class="btn btn-next">Sonraki</a>
+            </div>
+          </div>
+
+          <div class="form-step">
+            <div class="input-group">
+              <h2 class="question">
+                Binanın bulunduğu bölgede yağış miktarını nasıl tanımlarsınız?
+              </h2>
+              <label>
+                <input type="radio" name="Q5" value="0" checked />
+                <span>Genelde yağışlı</span>
+              </label>
+              <label>
+                <input type="radio" name="Q5" value="1" />
+                <span>Nadiren yağışlı</span>
+              </label>
+              <label>
+                <input type="radio" name="Q5" value="2" />
+                <span>Yağış yok</span>
+              </label>
+            </div>
+
+            <div class="btns-group">
+              <a href="#" class="btn btn-prev">Önceki</a>
+              <a href="#" class="btn btn-next">Sonraki</a>
+            </div>
+          </div>
+
+          <div class="form-step">
+            <div class="input-group">
+              <h2 class="question">
+                Binanın bulunduğu bölge şehir merkezinde veya kırsalda mı
+                bulunuyor?
+              </h2>
+              <label>
+                <input type="radio" name="Q6" value="0" checked />
+                <span>Şehir merkezinde</span>
+              </label>
+              <label>
+                <input type="radio" name="Q6" value="2" />
+                <span>Kırsalda</span>
+              </label>
+            </div>
+
+            <div class="btns-group">
+              <a href="#" class="btn btn-prev">Önceki</a>
+              <a href="#" class="btn btn-next">Sonraki</a>
+            </div>
+          </div>
+
+          <div class="form-step">
+            <div class="input-group">
+              <h2 class="question">
+                Binanın bulunduğu bölgedeki binalarin genel yüksekliği nasıl?
+              </h2>
+              <label>
+                <input type="radio" name="Q7" value="4" checked />
+                <span>Genelde tek katlı binalar</span>
+              </label>
+              <label>
+                <input type="radio" name="Q7" value="3" />
+                <span>Genelde 4-5 katlı binalar</span>
+              </label>
+              <label>
+                <input type="radio" name="Q7" value="2" />
+                <span>Genelde 10 kat ve üzeri binalar</span>
+              </label>
+              <label>
+                <input type="radio" name="Q7" value="1" />
+                <span>Gökdelen yoğunlukta</span>
+              </label>
+            </div>
+
+            <div class="btns-group">
+              <a href="#" class="btn btn-prev">Önceki</a>
+              <a href="#" class="btn btn-next">Sonraki</a>
+            </div>
+          </div>
+
+          <div class="form-step">
+            <div class="input-group">
+              <h2 class="question">
+                Binanın bulunduğu bölgedeki binalarin genel yüksekliği nasıl?
+              </h2>
+              <label>
+                <input type="radio" name="Q8" value="0" checked />
+                <span>Binalar birbirine çok yakın</span>
+              </label>
+              <label>
+                <input type="radio" name="Q8" value="2" />
+                <span>Binalar bölgede seyrek şekilde yerleşmiş</span>
+              </label>
+              <label>
+                <input type="radio" name="Q8" value="4" />
+                <span>Binalar arası mesafeler var</span>
+              </label>
+            </div>
+
+            <div class="btns-group">
+              <a href="#" class="btn btn-prev">Önceki</a>
+              <a href="#" class="btn btn-next">Sonraki</a>
+            </div>
+          </div>
+
+          <div class="form-step">
+            <div class="input-group">
+              <h2 class="question">Binanın yapı malzemesi nedir?</h2>
+              <label>
+                <input type="radio" name="Q9" value="4" checked />
+                <span>Çelik</span>
+              </label>
+              <label>
+                <input type="radio" name="Q9" value="3" />
+                <span>Beton</span>
+              </label>
+              <label>
+                <input type="radio" name="Q9" value="2" />
+                <span>Kerpiç</span>
+              </label>
+              <label>
+                <input type="radio" name="Q9" value="1" />
+                <span>Ahşap</span>
+              </label>
+              <label>
+                <input type="radio" name="Q9" value="0" />
+                <span>Prefabrik</span>
+              </label>
+            </div>
+
+            <div class="btns-group">
+              <a href="#" class="btn btn-prev">Önceki</a>
+              <a href="#" class="btn btn-next">Sonraki</a>
+            </div>
+          </div>
+
+          <div class="form-step">
+            <div class="input-group">
+              <h2 class="question">Binanın yapı malzemesi nedir?</h2>
+              <label>
+                <input type="radio" name="Q10" value="1" checked />
+                <span>Az sayıda cam var</span>
+              </label>
+              <label>
+                <input type="radio" name="Q10" value="1" />
+                <span>Orta sayıda cam var</span>
+              </label>
+              <label>
+                <input type="radio" name="Q10" value="0" />
+                <span>Çok sayıda cam var</span>
+              </label>
+            </div>
+
+            <div class="btns-group">
+              <a href="#" class="btn btn-prev">Önceki</a>
+              <a href="#" class="btn btn-next">Sonraki</a>
+            </div>
+          </div>
+
+          <div class="form-step">
+            <div class="input-group">
+              <h2 class="question">Evde kaç oda bulunuyor?</h2>
+              <label>
+                <input type="radio" name="Q11" value="1" checked />
+                <span>1-2 oda</span>
+              </label>
+              <label>
+                <input type="radio" name="Q11" value="1" />
+                <span>3-4 oda</span>
+              </label>
+              <label>
+                <input type="radio" name="Q11" value="0" />
+                <span>5 ve üzeri oda</span>
+              </label>
+            </div>
+
+            <div class="btns-group">
+              <a href="#" class="btn btn-prev">Önceki</a>
+              <a href="#" class="btn btn-next">Sonraki</a>
+            </div>
+          </div>
+
+          <div class="form-step">
+            <div class="input-group">
+              <h2 class="question">Eviniz kaç metrekare?</h2>
+              <label>
+                <input type="radio" name="Q12" value="4" checked />
+                <span>0-55 m2</span>
+              </label>
+              <label>
+                <input type="radio" name="Q12" value="3" />
+                <span>56-120 m2</span>
+              </label>
+              <label>
+                <input type="radio" name="Q12" value="2" />
+                <span>121-200 m2</span>
+              </label>
+              <label>
+                <input type="radio" name="Q12" value="1" />
+                <span>201 ve üzeri m2</span>
+              </label>
+            </div>
+
+            <div class="btns-group">
+              <a href="#" class="btn btn-prev">Önceki</a>
+              <a href="#" class="btn btn-next">Sonraki</a>
+            </div>
+          </div>
+
+          <div class="form-step">
+            <div class="input-group">
+              <h2 class="question">Evde kaç kişi yaşıyor?</h2>
+              <label>
+                <input type="radio" name="Q13" value="4" checked />
+                <span>1-2 kişi</span>
+              </label>
+              <label>
+                <input type="radio" name="Q13" value="2" />
+                <span>3-4 kişi</span>
+              </label>
+              <label>
+                <input type="radio" name="Q13" value="0" />
+                <span>5 ve üzeri kişi</span>
+              </label>
+            </div>
+
+            <div class="btns-group">
+              <a href="#" class="btn btn-prev">Önceki</a>
+              <a href="#" class="btn btn-next">Sonraki</a>
+            </div>
+          </div>
+
+          <div class="form-step">
+            <div class="input-group">
+              <h2 class="question">Evde 50 yaş ve üzerinde kaç kişi var?</h2>
+              <label>
+                <input type="radio" name="Q14" value="4" checked />
+                <span>0 kişi</span>
+              </label>
+              <label>
+                <input type="radio" name="Q14" value="2" />
+                <span>1-2 kişi</span>
+              </label>
+              <label>
+                <input type="radio" name="Q14" value="1" />
+                <span>3 ve üzeri kişi</span>
+              </label>
+            </div>
+
+            <div class="btns-group">
+              <a href="#" class="btn btn-prev">Önceki</a>
+              <a href="#" class="btn btn-next">Sonraki</a>
+            </div>
+          </div>
+
+          <div class="form-step">
+            <div class="input-group">
+              <h2 class="question">Evde evcil hayvan sayısı kaçtır?</h2>
+              <label>
+                <input type="radio" name="Q15" value="2" checked />
+                <span>0 kişi</span>
+              </label>
+              <label>
+                <input type="radio" name="Q15" value="1" />
+                <span>1-2</span>
+              </label>
+              <label>
+                <input type="radio" name="Q15" value="0" />
+                <span>3 ve üzeri</span>
+              </label>
+            </div>
+
+            <div class="btns-group">
+              <a href="#" class="btn btn-prev">Önceki</a>
+              <a href="#" class="btn btn-next">Sonraki</a>
+            </div>
+          </div>
+
+          <div class="form-step">
+            <div class="input-group">
+              <h2 class="question">Evde kamera sistemi var mı?</h2>
+              <label>
+                <input type="radio" name="Q16" value="1" checked />
+                <span>Var</span>
+              </label>
+              <label>
+                <input type="radio" name="Q16" value="4" />
+                <span>Yok</span>
+              </label>
+            </div>
+
+            <div class="btns-group">
+              <a href="#" class="btn btn-prev">Önceki</a>
+              <a href="#" class="btn btn-next">Sonraki</a>
+            </div>
+          </div>
+
+          <div class="form-step">
+            <div class="input-group">
+              <h2 class="question">Evde kaç adet kamera var?</h2>
+              <label>
+                <input type="radio" name="Q17" value="6" checked />
+                <span>0</span>
+              </label>
+              <label>
+                <input type="radio" name="Q17" value="4" />
+                <span>1-3</span>
+              </label>
+              <label>
+                <input type="radio" name="Q17" value="2" />
+                <span>4-6</span>
+              </label>
+              <label>
+                <input type="radio" name="Q17" value="0" />
+                <span>7 ve üzeri</span>
+              </label>
+            </div>
+
+            <div class="btns-group">
+              <a href="#" class="btn btn-prev">Önceki</a>
+              <a href="#" class="btn btn-next">Sonraki</a>
+            </div>
+          </div>
+
+          <div class="form-step">
+            <div class="input-group">
+              <h2 class="question">
+                Akıllı evinizde aşağıdakilerden hangilerine ihtiyacınız var?
+                (Birden fazla seçenek işaretleyebilirsiniz)
+              </h2>
+
+              <label>
+                <input type="checkbox" name="Q18" value="1" />
+                <span class="checkbox">Ev Aydınlatma Kontrol Sistemleri</span>
+              </label>
+              <label>
+                <input type="checkbox" name="Q18" value="1" />
+                <span class="checkbox">Güvenlik Sistemleri</span>
+              </label>
+              <label>
+                <input type="checkbox" name="Q18" value="1" />
+                <span class="checkbox"
+                  >Hareketli Aydınlatma Kontrolü Sensörleri</span
+                >
+              </label>
+              <label>
+                <input type="checkbox" name="Q18" value="1" />
+                <span class="checkbox">Termostatlar</span>
+              </label>
+              <label>
+                <input type="checkbox" name="Q18" value="1" />
+                <span class="checkbox">Akıllı Fişler</span>
+              </label>
+              <label>
+                <input type="checkbox" name="Q18" value="1" />
+                <span class="checkbox">Akıllı Anahtarlı Uzatma Kabloları</span>
+              </label>
+              <label>
+                <input type="checkbox" name="Q18" value="1" />
+                <span class="checkbox">Fırın, ocak uzaktan kontrol</span>
+              </label>
+              <label>
+                <input type="checkbox" name="Q18" value="1" />
+                <span class="checkbox"
+                  >Bahçe uzaktan kontrol sulama sistemleri</span
+                >
+              </label>
+              <label>
+                <input type="checkbox" name="Q18" value="1" />
+                <span class="checkbox">Buzdolabı içeriği görebilme</span>
+              </label>
+              <label>
+                <input type="checkbox" name="Q18" value="1" />
+                <span class="checkbox"
+                  >Gaz kaçağı, yangın vs. anlarında telefona anlık bildirim
+                  gelmesi</span
+                >
+              </label>
+            </div>
+
+            <div class="btns-group">
+              <a href="#" class="btn btn-prev">Önceki</a>
+              <input id="btnPredict" type="submit" value="Gönder" class="btn" />
+            </div>
+          </div>
+        </form>
+      </main>
     </div>
 
-  </div>
-
-  <div class="container">
-    <form id="predictForm"">
-        <span class = " header-span">Lütfen her soruyu doğru bir şekilde cevaplayınız. Boş soru bırakılmaması
-      gerekmektedir.</span> <br>
-
-      <!--COGRAFYA-->
-      <label for="Q1">1. Binanın bulunduğu bölgenin Dağlık/tepelik arazi yoğunluğunu nasıl tanımlarsınız?</label><br>
-      <input type="radio" name="Q1" value="1" checked = "checked" required>Dağlık
-      <input type="radio" name="Q1" value="2">Kısmen dağlık
-      <input type="radio" name="Q1" value="3">Dağ yok <br> <br>
-      <!--Puanlamayı bu şekilde yaptım knk en düşük 1 max 10 olabilsin diye-->
-
-      <label for="Q2">2. Bina bir ovada mı konumlanıyor?</label> <br>
-      <input type="radio" name="Q2" value="1" checked = "checked" required>Evet
-      <input type="radio" name="Q2" value="0">Hayır <br> <br>
-
-      <label for="Q3">3. Bina ormana yakın mı?</label> <br>
-      <input type="radio" name="Q3" value="0" checked = "checked" required>Ormanın içinde
-      <input type="radio" name="Q3" value="1">Ormana yakın
-      <input type="radio" name="Q3" value="2">Değil <br> <br>
-
-      <label for="Q4">4. Binanın suya(deniz, nehir vb.) yakınlığı nedir?</label> <br>
-      <input type="radio" name="Q4" value="0" checked = "checked" required>1 km'den az
-      <input type="radio" name="Q4" value="1">1-5 km arası
-      <input type="radio" name="Q4" value="2">Yakın değil <br> <br>
-
-      <label for="Q5">5. Binanın bulunduğu bölgede yağış miktarını nasıl tanımlarsınız?</label> <br>
-      <input type="radio" name="Q5" value="0" checked = "checked" required>Genelde yağışlı
-      <input type="radio" name="Q5" value="1">Nadiren yağışlı
-      <input type="radio" name="Q5" value="2">Yağış yok <br> <br>
-
-
-      <!-- TODO -->
-      <!-- PUANLAMALAR DAHA YAPILMADI -->
-      <!-- YERLESİM -->
-      <label for="Q6">6. Binanın bulunduğu bölge şehir merkezinde veya kırsalda mı bulunuyor?</label> <br>
-      <input type="radio" name="Q6" value="0" checked = "checked" required>Şehir merkezinde
-      <input type="radio" name="Q6" value="2">Kırsalda <br> <br>
-
-      <label for="Q7">7. Binanın bulunduğu bölgedeki binalarin genel yüksekliği nasıl?</label> <br>
-      <input type="radio" name="Q7" value="4" checked = "checked" required>Genelde tek katlı binalar
-      <input type="radio" name="Q7" value="3">Genelde 4-5 katlı binalar <br>
-      <input type="radio" name="Q7" value="2">Genelde 10 kat ve üzeri binalar
-      <input type="radio" name="Q7" value="1">Gökdelen yoğunlukta <br> <br>
-
-      <label for="Q8">8. Binanın bulunduğu bölgedeki binalarin sıklığı nasıl?</label> <br>
-      <input type="radio" name="Q8" value="0" checked = "checked" required>Binalar birbirine çok yakın
-      <input type="radio" name="Q8" value="2">Binalar bölgede seyrek şekilde yerleşmiş
-      <input type="radio" name="Q8" value="4">Binalar arası mesafeler var <br> <br>
-      <!-- BİNA MİMARİ VS -->
-      <label for="Q9">9. Binanın yapı malzemesi nedir?</label> <br>
-      <input type="radio" name="Q9" value="4" checked = "checked" required>Çelik
-      <input type="radio" name="Q9" value="3">Beton
-      <input type="radio" name="Q9" value="2">Kerpiç
-      <input type="radio" name="Q9" value="1">Ahşap
-      <input type="radio" name="Q9" value="0">Prefabrik <br> <br>
-
-      <label for="Q10">10. Binanın cam oranı nasıldır?</label> <br>
-      <input type="radio" name="Q10" value="1" required>Az sayıda cam var
-      <input type="radio" name="Q10" value="1" checked = "checked">Orta sayıda cam var
-      <input type="radio" name="Q10" value="0">Çok sayıda cam var <br> <br>
-      <!--Sorulardan biri 10 veya 11 kaldırılabilir veya puan değerleri float olarak verilerek toplam değerin 1-10 arasında olması sağlanabilir.-->
-      <label for="Q11">11. Evde kaç oda bulunuyor?</label> <br>
-      <input type="radio" name="Q11" value="1" required>1-2 oda
-      <input type="radio" name="Q11" value="1" checked = "checked">3-4 oda
-      <input type="radio" name="Q11" value="0">5 ve üzeri oda<br> <br>
-
-      <label for="Q12">12. Eviniz kaç metrekare?</label> <br>
-      <input type="radio" name="Q12" value="4" required>0-55 m2
-      <input type="radio" name="Q12" value="3">56-120 m2
-      <input type="radio" name="Q12" value="2">121-200 m2
-      <input type="radio" name="Q12" value="1" checked = "checked">201 ve üzeri m2<br> <br>
-
-      <!--İnsanSayisi-->
-      <label for="Q13">13. Evde kaç kişi yaşıyor?</label> <br>
-      <input type="radio" name="Q13" value="4" required checked = "checked">1-2 kişi
-      <input type="radio" name="Q13" value="2">3-4 kişi
-      <input type="radio" name="Q13" value="0">5 ve üzeri kişi<br> <br>
-
-      <label for="Q14">14. Evde 50 yaş ve üzerinde kaç kişi var?</label>
-      <input type="radio" name="Q14" value="4" required>0 kişi
-      <input type="radio" name="Q14" value="2" checked = "checked">1-2 kişi
-      <input type="radio" name="Q14" value="1">3 ve üzeri kişi<br> <br>
-
-      <label for="Q15">15. Evde evcil hayvan sayısı kaçtır?</label>
-      <input type="radio" name="Q15" value="2" required>0
-      <input type="radio" name="Q15" value="1" checked = "checked">1-2
-      <input type="radio" name="Q15" value="0">3 ve üzeri<br> <br>
-      
-      <!--KameraSistemSayisi-->
-      <label for="Q16">16. Evde kamera sistemi var mı?</label>
-      <input type="radio" name="Q16" value="1" checked = "checked" required>Var
-      <input type="radio" name="Q16" value="4">Yok<br> <br>
-     
-      <!-- <label for="Q17">17. Evde alarm sistemi var mı ?</label>
-      <input type="radio" name="Q17" value="0" required>Var
-      <input type="radio" name="Q17" value="1">Yok<br> <br> -->
-
-      <label for="Q18">18. Evde kaç adet kamera var?</label>
-      <input type="radio" name="Q18" value="6" checked = "checked" required>0
-      <input type="radio" name="Q18" value="4">1-3
-      <input type="radio" name="Q18" value="2">4-6
-      <input type="radio" name="Q18" value="0">7 ve üzeri<br> <br>
-
-
-      <label for="Q19">19. Akıllı evde aşağıdakilerden hangilerine ihtiyacınız var? (Birden fazla seçenek
-        işaretleyebilirsiniz)</label> <br>
-
-      <input type="checkbox" name="Q19" value="1" onchange="this.value = this.checked ? 1 : 0;">
-      <label for="Q19">Ev Aydınlatma Kontrol Sistemleri</label> <br>
-
-      <input type="checkbox" name="Q19" value="1" onchange="this.value = this.checked ? 1 : 0;">
-      <label for="Q19">Güvenlik Sistemleri</label> <br>
-
-      <input type="checkbox" name="Q19" value="1" onchange="this.value = this.checked ? 1 : 0;">
-      <label for="Q19">Hareketli Aydınlatma Kontrolü Sensörleri</label> <br>
-
-      <input type="checkbox" name="Q19" value="1" onchange="this.value = this.checked ? 1 : 0;">
-      <label for="Q19">Termostatlar</label> <br>
-
-      <input type="checkbox" name="Q19" value="1" onchange="this.value = this.checked ? 1 : 0;">
-      <label for="Q19">Akıllı Fişler</label> <br>
-
-      <input type="checkbox" name="Q19" value="1" onchange="this.value = this.checked ? 1 : 0;">
-      <label for="Q19">Akıllı Anahtarlı Uzatma Kabloları</label> <br>
-
-      <input type="checkbox" name="Q19" value="1" onchange="this.value = this.checked ? 1 : 0;">
-      <label for="Q19">Fırın, ocak uzaktan kontrol</label> <br>
-
-      <input type="checkbox" name="Q19" value="1" onchange="this.value = this.checked ? 1 : 0;">
-      <label for="Q19">Bahçe uzaktan kontrol sulama sistemleri</label> <br>
-
-      <input type="checkbox" name="Q19" value="1" onchange="this.value = this.checked ? 1 : 0;">
-      <label for="Q19">Buzolabı içeriği görebilme</label> <br>
-
-      <input type="checkbox" name="Q19" value="1" onchange="this.value = this.checked ? 1 : 0;">
-      <label for="Q19">Gaz kaçağı, yangın vs. anlarında telefona anlık bildirim gelmesi</label> <br>
-
-
-
-
-
-
-
-      <button type="submit" id="btnPredict">Modeli çalıştır!</button>
-
-    </form>
-  </div>
-
-
-  <div id="myModal" class="modal">
+    <!-- <div id="myModal" class="modal"> -->
 
     <!-- Modal content -->
-    <div class="modal-content">
-      <span>Verdiğiniz cevaplara göre önerilen haberleşme protokolü </span>
-      <p id="predResult""></p>
-      </div>
-    
-    </div>
+    <!-- <div class="modal-content">
+        <span>Verdiğiniz cevaplara göre önerilen haberleşme protokolü </span>
+        <p id="predResult""></p>
+        </div>
+      
+      </div> -->
 
-    <div id="loginErrorModal" class="modal">
+    <!-- <div id="loginErrorModal" class="modal"> -->
 
-        <!-- Modal content -->
-      <div id="loginErrorModalContent" class="modal-content">
-        <span>Kullanıcı girişi yapmanız gerekmektedir</span> <br> <br>
-        <button id="loginErrorBtn">Giriş yap</button>
-      </div>
-
-    </div>
+    <!-- Modal content -->
+    <!-- <div id="loginErrorModalContent" class="modal-content">
+          <span>Kullanıcı girişi yapmanız gerekmektedir</span> <br> <br>
+          <button id="loginErrorBtn"  class="btn">Giriş yap</button>
+        </div>
+  
+      </div> -->
 
     <script type="text/javascript" src="../js/main.js"></script>
-</body>
-
+    <script type="text/javascript" src="../js/form.js"></script>
+  </body>
 </html>
