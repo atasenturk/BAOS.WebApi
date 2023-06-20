@@ -19,16 +19,15 @@ using BAOS.Tests.Mock;
 [TestFixture]
 public class UserFixture
 {
-    private DbContextOptions<BAOSDbContext> _options;
     private BAOSDbContext _context;
-    private Mock<UserRepository> _userRepository;
+    private Mock<UserRepository> mockUserRepo;
 
     [OneTimeSetUp]
     public async Task Setup()
     {
         var dbFactory = new MockDbFactory("BaosDB");
         _context = new BAOSDbContext(dbFactory.Options);
-        _userRepository = new Mock<UserRepository>(_context);
+        mockUserRepo = new Mock<UserRepository>(_context);
         dbFactory.SeedData();
     }
 
@@ -45,7 +44,7 @@ public class UserFixture
         };
         
 
-        var result = (await _userRepository.Object.Register(user));
+        var result = (await mockUserRepo.Object.Register(user));
         // Assert
         Assert.AreEqual(result.UserName, user.UserName);
         Assert.AreEqual(result.Email, user.Email);
@@ -66,7 +65,7 @@ public class UserFixture
         _context.Users.Add(returnValue);
         _context.SaveChanges();
 
-        var result = await _userRepository.Object.Login(new LoginViewModel()
+        var result = await mockUserRepo.Object.Login(new LoginViewModel()
         {
             Email = "test@gmail.com",
             Password = "password"
@@ -89,7 +88,7 @@ public class UserFixture
 
         _context.Users.Add(returnValue);
         _context.SaveChanges();
-        var result = await _userRepository.Object.GetByEmail("test@gmail.com");
+        var result = await mockUserRepo.Object.GetByEmail("test@gmail.com");
 
 
         Assert.AreEqual(result.Email, returnValue.Email);
@@ -111,7 +110,7 @@ public class UserFixture
 
         _context.Users.Add(returnValue);
         _context.SaveChanges();
-        var result =  await _userRepository.Object.DeleteById(100);
+        var result =  await mockUserRepo.Object.DeleteById(100);
         // Act
         // Assert
         Assert.AreEqual(result, true);
@@ -141,7 +140,7 @@ public class UserFixture
             Requests = new List<Request>()
         };
 
-        var result = await _userRepository.Object.UpdateAsync(returnValue2);
+        var result = await mockUserRepo.Object.UpdateAsync(returnValue2);
         // Act
         // Assert
         Assert.AreEqual(result.UserName, returnValue2.UserName);
