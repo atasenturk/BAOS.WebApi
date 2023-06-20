@@ -23,7 +23,8 @@ public class ResultRepository : GenericRepository<Result>, IResultRepository
             {
                 RequestId = r.req.RequestId,
                 Protocol = r.res.Protocol,
-                Answers = r.req.Answers
+                Answers = r.req.Answers,
+                RequestTime = r.req.RequestTime
             })
             .ToList();
 

@@ -23,17 +23,15 @@ namespace BAOS.Web.Data.Services
 
         public async Task<User> Register(User register)
         {
-            var entity = await _context.Users
-                .FirstOrDefaultAsync(q => q.Email == register.Email);
-            if (entity == null)
+            if (await _context.Users.AnyAsync(q => q.Email == register.Email || q.UserName == register.UserName) )
             {
-                register.Password = Encryptor.EncryptMD5(register.Password);
-
-                return await base.AddAsync(register);
+                return null;
             }
-            return null;
-        }
 
+            register.Password = Encryptor.EncryptMD5(register.Password);
+            return await base.AddAsync(register);
+        }
+        
         public async Task<bool> Login(LoginViewModel model)
         {
             var entity = await _context.Users
@@ -53,9 +51,23 @@ namespace BAOS.Web.Data.Services
         public async Task<User>UpdateAsync(User entity)
         {
             entity.Password = Encryptor.EncryptMD5(entity.Password);
-            _context.Entry(entity).State = EntityState.Modified;
+            //_context.Entry(entity).State = EntityState.Modified;
+            _context.Update(entity);
             await _context.SaveChangesAsync();
             return entity;
+        }
+
+        public async Task<bool> DeleteById(int id)
+        {
+            var user = await _context.Users.FindAsync(id);
+            if (user == null)
+            {
+                return false; 
+            }
+
+            _context.Users.Remove(user);
+            await _context.SaveChangesAsync();
+            return true;
         }
     }
 }

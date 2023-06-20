@@ -11,5 +11,6 @@ namespace BAOS.Web.Domain.Models
         public int RequestId { get; set; }
         public int Protocol { get; set; }
         public string Answers { get; set; }
+        public DateTime RequestTime { get; set; }
     }
 }
