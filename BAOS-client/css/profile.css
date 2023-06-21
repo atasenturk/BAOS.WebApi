@@ -2056,7 +2056,7 @@
   
   th {
     vertical-align: bottom;
-    background-color: rgba(0, 0, 0, 0.75);
+    background-color: #47446c;
     color: #fff;
     font-weight: bold;
   }
@@ -2174,9 +2174,9 @@
   }
 
   .label-success {
-    color: green;
-  }
-  
-  .label-error {
-    color: red;
-  }
+  color: green;
+}
+
+.label-error {
+  color: red;
+}
