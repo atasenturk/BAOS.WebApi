@@ -126,6 +126,9 @@ async function sendUpdateRequest() {
 
   let options = {
     method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
     body: JSON.stringify(payload),
   };
 
