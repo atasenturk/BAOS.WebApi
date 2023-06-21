@@ -239,3 +239,16 @@ p {
 #loginErrorBtn {
   display: inline;
 }
+
+#lbl-success-save {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.success-save {
+  color: green;
+}
+
+.error-save {
+  color: red;
+}

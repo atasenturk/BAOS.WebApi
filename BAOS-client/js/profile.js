@@ -31,6 +31,7 @@ const inputUsername = document.getElementById("input-username");
 const inputEmail = document.getElementById("input-email");
 const inputPassword = document.getElementById("input-password");
 const inputNewPassword = document.getElementById("input-new-password");
+const labelSuccessUpdate = document.getElementById("lbl-success-update");
 
 //profil sayfasındaki güncelle butonu
 const btnUpdate = document.getElementById("update-user-info");
@@ -100,18 +101,27 @@ async function updateUserInfo(e) {
     },
     body: JSON.stringify(data),
   })
-    .then((response) => {
-      if (response.status === 200) {
-        sendUpdateRequest();
-      } else if (response.status === 400) {
-        console.log("Şifre güncellenemiyor şifre yanlış");
-      } else {
-        throw new Error("Network response was not ok.");
-      }
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+  .then((response) => {
+    if (response.status === 200) {
+      labelSuccessUpdate.innerHTML = "Şifre güncellendi!";
+      labelSuccessUpdate.classList.remove("label-error");
+      labelSuccessUpdate.classList.add("label-success");
+      sendUpdateRequest();
+    } else if (response.status === 400) {
+      labelSuccessUpdate.innerHTML = "Şifre güncellenemiyor. Eski şifre ile eşleşmedi!";
+      labelSuccessUpdate.classList.remove("label-success");
+      labelSuccessUpdate.classList.add("label-error");
+    } else {
+      labelSuccessUpdate.innerHTML = "Bir sorun oluştu. Lütfen daha sonra tekrar dene!";
+      labelSuccessUpdate.classList.remove("label-success");
+      labelSuccessUpdate.classList.add("label-error");
+    }
+
+    setTimeout(() => {
+      labelSuccessUpdate.innerHTML = "";
+      labelSuccessUpdate.classList.remove("label-success", "label-error");
+    }, 2000);
+  });
 }
 
 async function sendUpdateRequest() {

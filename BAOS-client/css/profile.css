@@ -2172,3 +2172,11 @@
     height: 1px;
     white-space: nowrap;
   }
+
+  .label-success {
+    color: green;
+  }
+  
+  .label-error {
+    color: red;
+  }
