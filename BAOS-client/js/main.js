@@ -1,5 +1,6 @@
 const url = "https://localhost:44329/api";
-
+const urlLogin = "https://localhost:44329/api/user/login";
+let urlUpdate = "https://localhost:44329/api/user/";
 const btnPredict = document.getElementById("btnPredict");
 const loginErrorBtn = document.getElementById("loginErrorBtn");
 var modal = document.getElementById("myModal");
@@ -9,7 +10,6 @@ const logoutBtn = document.getElementById("btn-logout");
 var loginErrorModal = document.getElementById("loginErrorModal");
 
 loadIndex();
-showUser();
 
 function loadIndex(e) {
   let lblGreeding = document.getElementById("greeding");
@@ -35,29 +35,22 @@ async function getUser(e) {
   return data;
 }
 
-async function showUser() {
-  const user = await getUser();
-  const table = document.createElement("table");
-
-  // Kullanıcı bilgileri
-  const tbody = document.createElement("tbody");
-  const dataRow = document.createElement("tr");
-  const td1 = document.createElement("td");
-  td1.textContent = user.id;
-  const td2 = document.createElement("td");
-  td2.textContent = user.userName;
-  const td3 = document.createElement("td");
-  td3.textContent = user.email;
-  dataRow.appendChild(td1);
-  dataRow.appendChild(td2);
-  dataRow.appendChild(td3);
-  tbody.appendChild(dataRow);
-  table.appendChild(tbody);
-
-  // Tabloyu HTML sayfasına ekleme
-  const container = document.getElementById("card-body-div");
-  container.appendChild(table);
+function findSelectedOptions(form) {
+  var selectedOptions = [];
+  var checkboxes = form.querySelectorAll('input[name="Q19"]:checked');
+  checkboxes.forEach(function (checkbox) {
+    selectedOptions.push(checkbox.value);
+  });
+  return selectedOptions;
 }
+
+document
+  .getElementById("btnPredict")
+  .addEventListener("click", function (event) {
+    event.preventDefault();
+    var form = document.querySelector(".form-step.active"); // Aktif formu seçmek için uygun bir seçici kullanın
+    selectedOptionsQ19 = findSelectedOptions(form);
+  });
 
 function getAnswers() {
   try {
@@ -129,9 +122,13 @@ function getAnswers() {
           .value
       );
 
+    var partE = parseInt(
+      Array.from(document.getElementsByName("Q16")).find((r) => r.checked).value
+    );
+
     var partF =
       parseInt(
-        Array.from(document.getElementsByName("Q16")).find((r) => r.checked)
+        Array.from(document.getElementsByName("Q17")).find((r) => r.checked)
           .value
       ) +
       parseInt(
@@ -143,18 +140,53 @@ function getAnswers() {
       (r) => r.checked
     ).length;
 
-    console.log(partA);
-    console.log(partB);
-    console.log(partC);
-    console.log(partD);
-    console.log(partF);
-    console.log(partG);
+    var threeParameter = createLastParameters();
+    var values = [
+      partA,
+      partB,
+      partC,
+      partD,
+      partE,
+      partF,
+      threeParameter[0],
+      threeParameter[1],
+      threeParameter[2],
+    ];
 
-    var values = [partA, partB, partC, partD, partF, partG, 5, 2, 2];
     return values;
   } catch (error) {
     alert("Her soruyu cevaplamanız gerekmektedir.");
   }
+}
+
+function createLastParameters() {
+  // 0, 1, 4
+  let twoDimensionalArray = [
+    [4, 7, 5],
+    [2, 1, 1],
+    [1, 5, 7],
+    [8, 8, 8],
+    [10, 9, 9],
+    [10, 9, 9],
+    [4, 2, 3],
+    [7, 10, 3],
+    [3, 1, 1],
+    [7, 10, 4],
+    [3, 1, 1],
+  ];
+
+  let minValues = [];
+
+  for (let j = 0; j < 3; j++) {
+    let min = twoDimensionalArray[selectedOptionsQ19[0]][j];
+    for (let i = 1; i < selectedOptionsQ19.length; i++) {
+      const element = twoDimensionalArray[selectedOptionsQ19[i]][j];
+      if (element < min) min = twoDimensionalArray[selectedOptionsQ19[i]][j];
+    }
+    minValues.push(min);
+  }
+
+  return minValues;
 }
 
 function AnswersToString() {
@@ -168,7 +200,8 @@ function AnswersToString() {
     }
   }
 
-  const answersString = answers.join(" ");
+  var answersString = answers.join(" ");
+  answersString += " " + selectedOptionsQ19.join(" ");
   return answersString;
 }
 
@@ -176,14 +209,12 @@ async function clickPredict(e) {
   e.preventDefault();
 
   const values = getAnswers();
-  // const user = await getUser();
+  const user = await getUser();
   const data = {
-    // userId: user.id,
+    userId: user.id,
     answers: AnswersToString(),
     features: values,
   };
-
-  console.log(data);
 
   await fetch(url + "/BAOSModel", {
     method: "POST",
