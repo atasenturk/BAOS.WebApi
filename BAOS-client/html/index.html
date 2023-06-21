@@ -17,7 +17,7 @@
     <nav class="topnav">
       <a class="logo">BAOS</a>
       <a class="active" href="index.html"
-        ><i class="fa fa-fw fa-podcast"></i> Prediction</a
+        ><i class="fa fa-fw fa-podcast"></i> Öneri Al</a
       >
       <div class="topnav-right">
         <span id="greeding"></span>
@@ -66,10 +66,10 @@
             <div class="progress-step"></div>
             <div class="progress-step"></div>
             <div class="progress-step"></div>
+            <div class="progress-step"></div>
           </div>
 
           <!-- Qeustions -->
-
           <div class="form-step active">
             <div class="input-group">
               <h2 class="question">
@@ -240,7 +240,7 @@
           <div class="form-step">
             <div class="input-group">
               <h2 class="question">
-                Binanın bulunduğu bölgedeki binalarin genel yüksekliği nasıl?
+                Binanın bulunduğu bölgedeki binalarin sıklığı nasıl?
               </h2>
               <label>
                 <input type="radio" name="Q8" value="0" checked />
@@ -295,7 +295,7 @@
 
           <div class="form-step">
             <div class="input-group">
-              <h2 class="question">Binanın yapı malzemesi nedir?</h2>
+              <h2 class="question">Binanın cam oranı nasıldır?</h2>
               <label>
                 <input type="radio" name="Q10" value="1" checked />
                 <span>Az sayıda cam var</span>
@@ -437,13 +437,36 @@
 
           <div class="form-step">
             <div class="input-group">
+              <h2 class="question">Dairede yaşayan insanların yaş ortalaması nedir?</h2>
+              <label>
+                <input type="radio" name="Q16" value="10" checked />
+                <span>25'ten küçük</span>
+              </label>
+              <label>
+                <input type="radio" name="Q16" value="5" />
+                <span>25-50 aralığında</span>
+              </label>
+              <label>
+                <input type="radio" name="Q16" value="0" />
+                <span>50'den fazla</span>
+              </label>
+            </div>
+
+            <div class="btns-group">
+              <a href="#" class="btn btn-prev">Önceki</a>
+              <a href="#" class="btn btn-next">Sonraki</a>
+            </div>
+          </div>
+
+          <div class="form-step">
+            <div class="input-group">
               <h2 class="question">Evde kamera sistemi var mı?</h2>
               <label>
-                <input type="radio" name="Q16" value="1" checked />
+                <input type="radio" name="Q17" value="1" checked />
                 <span>Var</span>
               </label>
               <label>
-                <input type="radio" name="Q16" value="4" />
+                <input type="radio" name="Q17" value="4" />
                 <span>Yok</span>
               </label>
             </div>
@@ -458,19 +481,19 @@
             <div class="input-group">
               <h2 class="question">Evde kaç adet kamera var?</h2>
               <label>
-                <input type="radio" name="Q17" value="6" checked />
+                <input type="radio" name="Q18" value="6" checked />
                 <span>0</span>
               </label>
               <label>
-                <input type="radio" name="Q17" value="4" />
+                <input type="radio" name="Q18" value="4" />
                 <span>1-3</span>
               </label>
               <label>
-                <input type="radio" name="Q17" value="2" />
+                <input type="radio" name="Q18" value="2" />
                 <span>4-6</span>
               </label>
               <label>
-                <input type="radio" name="Q17" value="0" />
+                <input type="radio" name="Q18" value="0" />
                 <span>7 ve üzeri</span>
               </label>
             </div>
@@ -489,52 +512,65 @@
               </h2>
 
               <label>
-                <input type="checkbox" name="Q18" value="1" />
+                <input type="checkbox" name="Q19" value="0" />
                 <span class="checkbox">Ev Aydınlatma Kontrol Sistemleri</span>
               </label>
               <label>
-                <input type="checkbox" name="Q18" value="1" />
+                <input type="checkbox" name="Q19" value="1" />
                 <span class="checkbox">Güvenlik Sistemleri</span>
               </label>
               <label>
-                <input type="checkbox" name="Q18" value="1" />
+                <input type="checkbox" name="Q19" value="2" />
                 <span class="checkbox"
                   >Hareketli Aydınlatma Kontrolü Sensörleri</span
                 >
               </label>
               <label>
-                <input type="checkbox" name="Q18" value="1" />
+                <input type="checkbox" name="Q19" value="3" />
                 <span class="checkbox">Termostatlar</span>
               </label>
               <label>
-                <input type="checkbox" name="Q18" value="1" />
+                <input type="checkbox" name="Q19" value="4" />
                 <span class="checkbox">Akıllı Fişler</span>
               </label>
               <label>
-                <input type="checkbox" name="Q18" value="1" />
+                <input type="checkbox" name="Q19" value="5" />
                 <span class="checkbox">Akıllı Anahtarlı Uzatma Kabloları</span>
               </label>
               <label>
-                <input type="checkbox" name="Q18" value="1" />
+                <input type="checkbox" name="Q19" value="6" />
                 <span class="checkbox">Fırın, ocak uzaktan kontrol</span>
               </label>
               <label>
-                <input type="checkbox" name="Q18" value="1" />
+                <input type="checkbox" name="Q19" value="7" />
                 <span class="checkbox"
                   >Bahçe uzaktan kontrol sulama sistemleri</span
                 >
               </label>
               <label>
-                <input type="checkbox" name="Q18" value="1" />
-                <span class="checkbox">Buzdolabı içeriği görebilme</span>
+                <input type="checkbox" name="Q19" value="8" />
+                <span class="checkbox">Çamaşır makinesi uzaktan kontrol</span>
               </label>
               <label>
-                <input type="checkbox" name="Q18" value="1" />
+                <input type="checkbox" name="Q19" value="9" />
                 <span class="checkbox"
                   >Gaz kaçağı, yangın vs. anlarında telefona anlık bildirim
                   gelmesi</span
                 >
               </label>
+              <label>
+                <input type="checkbox" name="Q19" value="10" />
+                <span class="checkbox"
+                  >Buzdolabı içeriği görebilme</span
+                >
+              </label>
+              <label>
+                <input type="checkbox" name="Q19" value="11" />
+                <span class="checkbox"
+                  >Kapı zorlamasına karşı, ev içinde siren çalması, ev dışındakilere ise telefon bildirimi gönderilmesi</span
+                >
+              </label>
+
             </div>
 
             <div class="btns-group">
@@ -546,25 +582,25 @@
       </main>
     </div>
 
-    <!-- <div id="myModal" class="modal"> -->
+    <div id="myModal" class="modal"> -->
 
     <!-- Modal content -->
-    <!-- <div class="modal-content">
+    <div class="modal-content">
         <span>Verdiğiniz cevaplara göre önerilen haberleşme protokolü </span>
         <p id="predResult""></p>
         </div>
       
-      </div> -->
+      </div>
 
-    <!-- <div id="loginErrorModal" class="modal"> -->
+    <div id="loginErrorModal" class="modal">
 
     <!-- Modal content -->
-    <!-- <div id="loginErrorModalContent" class="modal-content">
+    <div id="loginErrorModalContent" class="modal-content">
           <span>Kullanıcı girişi yapmanız gerekmektedir</span> <br> <br>
           <button id="loginErrorBtn"  class="btn">Giriş yap</button>
-        </div>
+        </div> 
   
-      </div> -->
+    </div>
 
     <script type="text/javascript" src="../js/main.js"></script>
     <script type="text/javascript" src="../js/form.js"></script>

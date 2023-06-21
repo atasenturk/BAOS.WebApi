@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="../css/deneme.css" />
+    <link rel="stylesheet" type="text/css" href="../css/index.css" />
     <link rel="stylesheet" type="text/css" href="../css/profile.css" />
     <link
       rel="stylesheet"
@@ -24,7 +24,7 @@
       <!-- Top navbar -->
       <nav class="topnav">
         <a class="logo">BAOS</a>
-        <a href="deneme.html"><i class="fa fa-fw fa-podcast"></i> Prediction</a>
+        <a href="index.html"><i class="fa fa-fw fa-podcast"></i> Öneri Al</a>
         <div class="topnav-right">
           <span id="greeding">Hoşgeldiniz </span>
           <a class="active" href="profile.html"
@@ -61,7 +61,7 @@
                             type="text"
                             id="input-username"
                             class="form-control form-control-alternative"
-                            placeholder="Username"
+                            placeholder="Kullanıcı adı"
                             value="lucky.jesse"
                           />
                         </div>
@@ -85,15 +85,14 @@
                         <div class="form-group focused">
                           <label
                             class="form-control-label"
-                            for="input-first-name"
-                            >İsim</label
+                            for="input-password"
+                            >Şifre</label
                           >
                           <input
-                            type="text"
-                            id="input-first-name"
+                            type="password"
+                            id="input-password"
                             class="form-control form-control-alternative"
-                            placeholder="First name"
-                            value="Lucky"
+                            placeholder="Eski Şifre"
                           />
                         </div>
                       </div>
@@ -101,31 +100,67 @@
                         <div class="form-group focused">
                           <label
                             class="form-control-label"
-                            for="input-last-name"
-                            >Soyisim</label
+                            for="input-new-password"
+                            >Yeni Şifre</label
                           >
                           <input
-                            type="text"
-                            id="input-last-name"
+                            type="password"
+                            id="input-new-password"
                             class="form-control form-control-alternative"
-                            placeholder="Last name"
-                            value="Jesse"
+                            placeholder="Yeni Şifre"
                           />
                         </div>
                       </div>
                     </div>
                   </div>
                   <div class="d-flex justify-content-center">
-                    <a href="#!" class="btn  btn-primary">Güncelle</a>
+                    <a href="#!" id="update-user-info" class="btn  btn-primary">Güncelle</a>
                   </div>
                   <hr class="my-4" />
                   
-                  <!-- Description -->
-                  <h6 class="heading-small text-muted mb-4">Önceki Sorgularım</h6>
-                  <div class="pl-lg-4">
                 </form>
+                <!-- Description -->
+                <h6 class="heading-small text-muted mb-4">Önceki Sorgularım</h6>
+                <div class="pl-lg-4">
+                  <table class="cell">
+                    <thead>
+                      <tr>
+                        <th><span class="visually-hidden">Toggle</span></th>
+                        <th>No</th>
+                        <th>Tarih</th>
+                        <th>Önerilen Protokol</th>
+                      </tr>
+                    </thead>
+                    <tbody id="table-body">
+                      <!-- <tr>
+                        <td>
+                          <button type="button" id="btnMSb" aria-expanded="false" onclick="toggle(this.id,'#MS01b,#MS02b,#MS03b');"   >
+                            <svg xmlns="\http://www.w3.org/2000/svg&quot;" viewBox="0 0 80 80" focusable="false"><path d="M70.3 13.8L40 66.3 9.7 13.8z"></path></svg>
+                          </button>
+                        </td>
+                        <td id="lblMSb">1</td>
+                        <td>21.06.2023 16:30</td>
+                        <td>LAN</td>
+                      </tr>
+                      <tr id="MS01b" class="hidden">
+                        <td>Binanın bulunduğu bölgenin dağlık/tepelik arazi yoğunluğunu nasıl tanımlarsınız?</td>
+                        <td>Dağlık</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                      <tr id="MS02b" class="hidden">
+                        <td>Bina bir ovada mı konumlanıyor?</td>
+                        <td>Evet</td>
+                        <td></td>
+                        <td></td>
+                      </tr> -->
+                     
+                    </tbody>
+                  </table>
               </div>
             </div>
     </div>
+    <script src="../js/main.js"></script>
+    <script src="../js/profile.js"></script>
   </body>
 </html>

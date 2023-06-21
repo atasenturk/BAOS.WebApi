@@ -33,7 +33,7 @@ public class UserFixture
 
 
     [Test]
-    public async Task Register_UniqueUser_ReturnsUser()
+    public async Task RegisterUniqueUserReturnsUser()
     {
         var user = new User()
         {
@@ -52,7 +52,7 @@ public class UserFixture
     }
 
     [Test]
-    public async Task Login_Test()
+    public async Task LoginTest()
     {
         var returnValue = new User()
         {
@@ -76,7 +76,7 @@ public class UserFixture
     }
 
     [Test]
-    public async Task GetByEmail_Test()
+    public async Task GetByEmailTest()
     {
         var returnValue = new User()
         {
@@ -97,7 +97,7 @@ public class UserFixture
     }
 
     [Test]
-    public async Task DeleteById_Test()
+    public async Task DeleteByIdTest()
     {
         var returnValue = new User()
         {
@@ -117,11 +117,10 @@ public class UserFixture
     }
 
     [Test]
-    public async Task UpdateAsync_Test()
+    public async Task UpdateAsyncTest()
     {
         var returnValue = new User()
         {
-            Id = 100,
             UserName = "test",
             Email = "test@gmail.com",
             Password = "password",
@@ -133,10 +132,9 @@ public class UserFixture
 
         var returnValue2 = new User()
         {
-            Id = 100,
-            UserName = "testNew",
+            UserName = "test",
             Email = "test@gmail.com",
-            Password = "password",
+            Password = "newPass",
             Requests = new List<Request>()
         };
 
