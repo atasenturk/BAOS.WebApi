@@ -34,7 +34,6 @@ const inputNewPassword = document.getElementById("input-new-password");
 
 //profil sayfasındaki güncelle butonu
 const btnUpdate = document.getElementById("update-user-info");
-
 btnUpdate.addEventListener("click", updateUserInfo);
 
 loadProfile();
@@ -127,9 +126,6 @@ async function sendUpdateRequest() {
 
   let options = {
     method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
     body: JSON.stringify(payload),
   };
 
