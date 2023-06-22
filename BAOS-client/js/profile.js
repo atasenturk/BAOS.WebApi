@@ -100,19 +100,20 @@ async function updateUserInfo(e) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(data),
-  })
-  .then((response) => {
+  }).then((response) => {
     if (response.status === 200) {
       labelSuccessUpdate.innerHTML = "Şifre güncellendi!";
       labelSuccessUpdate.classList.remove("label-error");
       labelSuccessUpdate.classList.add("label-success");
       sendUpdateRequest();
     } else if (response.status === 400) {
-      labelSuccessUpdate.innerHTML = "Şifre güncellenemiyor. Eski şifre ile eşleşmedi!";
+      labelSuccessUpdate.innerHTML =
+        "Şifre güncellenemiyor. Eski şifre ile eşleşmedi!";
       labelSuccessUpdate.classList.remove("label-success");
       labelSuccessUpdate.classList.add("label-error");
     } else {
-      labelSuccessUpdate.innerHTML = "Bir sorun oluştu. Lütfen daha sonra tekrar dene!";
+      labelSuccessUpdate.innerHTML =
+        "Bir sorun oluştu. Lütfen daha sonra tekrar dene!";
       labelSuccessUpdate.classList.remove("label-success");
       labelSuccessUpdate.classList.add("label-error");
     }
@@ -146,8 +147,6 @@ async function sendUpdateRequest() {
 }
 
 async function showRequests(requests) {
-  console.log(requests);
-
   requests.forEach((request, i) => {
     let requestId = request.requestId;
     let questions = [];
@@ -158,10 +157,8 @@ async function showRequests(requests) {
     for (let i = 1; i <= 19; i++) {
       let questionId = `r${requestId}q${i}`;
       questions.push(`<tr id="${questionId}" class="hidden">
-        <td>${Object.keys(answers)[i - 1]}</td>
-        <td>${Object.values(answers)[i - 1]}</td>
-        <td></td>
-        <td></td>
+        <td>${i}-${Object.keys(answers)[i - 1]}</td>
+        <td colspan="3">${Object.values(answers)[i - 1]}</td>
       </tr>`);
       questionIds.push(`#${questionId}`);
       answerIndex += 2;
